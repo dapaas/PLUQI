@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    	android:color="?android:colorControlHighlight">
+    <item android:id="@android:id/mask" android:drawable="@drawable/main_background"/>
+    <item android:drawable="@drawable/workout_states"/>
+</ripple>

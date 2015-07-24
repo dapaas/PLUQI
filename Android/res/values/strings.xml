@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Saltlux</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="list">List</string>
+    <string name="map">Map</string>
+    <string name="rank_of_cities">Rank of Cities</string>
+    <string name="compare_cities">Compare Cities</string>
+	<string name="empty"></string>
+    <string name="home">Home</string>
+    <string name="education">Education</string>
+    <string name="environment">Environment</string>
+    <string name="healthcare">Healthcare</string>
+    <string name="cultural_satisfaction">Cultural Satisfaction</string>
+    <string name="traffic_satisfaction">Traffic Satisfaction</string>
+</resources>
