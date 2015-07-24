@@ -10,14 +10,16 @@ import com.sirmamobile.base.utils.ParcelWrapper;
 
 public class RankCity implements Parcelable{
 
-	private List<Data> data = new ArrayList<Data>();
+	private DataCityDetails data;
 	private String rankOfCitiesData;
 	
-	public List<Data> getData() {
+	
+
+	public DataCityDetails getData() {
 		return data;
 	}
 
-	public void setData(List<Data> data) {
+	public void setData(DataCityDetails data) {
 		this.data = data;
 	}
 
@@ -43,7 +45,7 @@ public class RankCity implements Parcelable{
 
     private RankCity(Parcel in) {
         ParcelWrapper pw = new ParcelWrapper(in);
-        pw.readList(data, Data.class.getClassLoader());
+        data = pw.readParcelable(DataCityDetails.class.getClassLoader());
         rankOfCitiesData = pw.readString();
     }
 
@@ -55,7 +57,7 @@ public class RankCity implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         ParcelWrapper pw = new ParcelWrapper(dest);
-        pw.writeList(data);
+        pw.writeParcelable(data, flags);
         pw.writeString(rankOfCitiesData);
     }
     

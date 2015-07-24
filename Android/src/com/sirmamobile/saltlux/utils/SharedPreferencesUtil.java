@@ -154,7 +154,7 @@ public class SharedPreferencesUtil {
     }
 
     public static synchronized NavigationType getStartingTab() {
-    	return NavigationType.valueOf(getSharedPreferences().getString(STARTING_TAB, NavigationType.MAP.name()));
+    	return NavigationType.valueOf(getSharedPreferences().getString(STARTING_TAB, NavigationType.HOME.name()));
     }
 
     public static synchronized void removeStartingTab() {

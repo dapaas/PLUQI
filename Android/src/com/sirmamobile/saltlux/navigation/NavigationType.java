@@ -4,8 +4,7 @@ import com.sirmamobile.saltlux.R;
 
 public enum NavigationType {
 
-	LIST(R.id.list, R.string.list),
-	MAP(R.id.map, R.string.list),
+	HOME(R.id.home, R.string.home),
 	RANK(R.id.rank, R.string.rank_of_cities),
 	COMPARE(R.id.compare, R.string.compare_cities);
 	

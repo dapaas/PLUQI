@@ -12,19 +12,19 @@ public class Data implements Parcelable{
 	private String city;
 	
 	@SerializedName("Education")
-	private String education;
+	private double education;
 	
 	@SerializedName("Environment")
-	private String environment;
+	private double environment;
 	
 	@SerializedName("Healthcare")
-	private String healthcare;
+	private double healthcare;
 	
 	@SerializedName("Cultural Satisfaction")
-	private String culturalSatisfaction;
+	private double culturalSatisfaction;
 	
 	@SerializedName("Traffic Satisfaction")
-	private String trafficSatisfaction;
+	private double trafficSatisfaction;
 	
 	@SerializedName("PLUQI")
 	private double pluqi;
@@ -41,43 +41,43 @@ public class Data implements Parcelable{
 		this.city = city;
 	}
 
-	public String getEducation() {
+	public double getEducation() {
 		return education;
 	}
 
-	public void setEducation(String education) {
+	public void setEducation(double education) {
 		this.education = education;
 	}
 
-	public String getEnvironment() {
+	public double getEnvironment() {
 		return environment;
 	}
 
-	public void setEnvironment(String environment) {
+	public void setEnvironment(double environment) {
 		this.environment = environment;
 	}
 
-	public String getHealthcare() {
+	public double getHealthcare() {
 		return healthcare;
 	}
 
-	public void setHealthcare(String healthcare) {
+	public void setHealthcare(double healthcare) {
 		this.healthcare = healthcare;
 	}
 
-	public String getCulturalSatisfaction() {
+	public double getCulturalSatisfaction() {
 		return culturalSatisfaction;
 	}
 
-	public void setCulturalSatisfaction(String culturalSatisfaction) {
+	public void setCulturalSatisfaction(double culturalSatisfaction) {
 		this.culturalSatisfaction = culturalSatisfaction;
 	}
 
-	public String getTrafficSatisfaction() {
+	public double getTrafficSatisfaction() {
 		return trafficSatisfaction;
 	}
 
-	public void setTrafficSatisfaction(String trafficSatisfaction) {
+	public void setTrafficSatisfaction(double trafficSatisfaction) {
 		this.trafficSatisfaction = trafficSatisfaction;
 	}
 
@@ -104,6 +104,14 @@ public class Data implements Parcelable{
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
+	
+	
+
+	public Data() {
+		super();
+	}
+
+
 
 	public static final Creator<Data> CREATOR = new Creator<Data>() {
         @Override
@@ -120,11 +128,11 @@ public class Data implements Parcelable{
     private Data(Parcel in) {
         ParcelWrapper pw = new ParcelWrapper(in);
         city = pw.readString();
-        education = pw.readString();
-        environment = pw.readString();
-        healthcare = pw.readString();
-        culturalSatisfaction = pw.readString();
-        trafficSatisfaction = pw.readString();
+        education = pw.readDouble();
+        environment = pw.readDouble();
+        healthcare = pw.readDouble();
+        culturalSatisfaction = pw.readDouble();
+        trafficSatisfaction = pw.readDouble();
         pluqi = pw.readDouble();
         lon = pw.readDouble();
         lat = pw.readDouble();
@@ -140,11 +148,11 @@ public class Data implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         ParcelWrapper pw = new ParcelWrapper(dest);
         pw.writeString(city);
-        pw.writeString(education);
-        pw.writeString(environment);
-        pw.writeString(healthcare);
-        pw.writeString(culturalSatisfaction);
-        pw.writeString(trafficSatisfaction);
+        pw.writeDouble(education);
+        pw.writeDouble(environment);
+        pw.writeDouble(healthcare);
+        pw.writeDouble(culturalSatisfaction);
+        pw.writeDouble(trafficSatisfaction);
         pw.writeDouble(pluqi);
         pw.writeDouble(lon);
         pw.writeDouble(lat);

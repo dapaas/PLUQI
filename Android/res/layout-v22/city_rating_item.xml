@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stateListAnimator="@anim/workout_elevation"    
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="2dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/workout_riple"
+        android:padding="15dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/txtRatingItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="8" />
+
+        <TextView
+            android:id="@+id/txtRatingValueItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="4" />
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

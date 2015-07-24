@@ -1,5 +1,6 @@
 package com.sirmamobile.saltlux.http.api;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -89,5 +90,18 @@ public abstract class SaltluxBaseHttp extends HTTPTask{
 				e.printStackTrace();
 			}
     	return null;
+    }
+    
+    protected String readJsonFromAssets(Context context, String filename) {
+        try {
+            InputStream is = context.getAssets().open(filename);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            return new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            return null;
+        }
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="debug_url">http://192.168.68.61:8080/PLUQI/</string>
-    <string name="release_url">http://192.168.68.61:8080/PLUQI/</string>
+    <string name="debug_url">http://192.168.68.40:8080/PLUQI/</string>
+    <string name="release_url">http://192.168.68.40:8080/PLUQI/</string>
     
 
 </resources>

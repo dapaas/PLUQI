@@ -5,12 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.maps.MapView;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.sirmamobile.base.BaseFragment;
 
 /**
  * Created by Martin on 5/5/2015.
  */
-public abstract class BaseMapFragment extends SaltluxFragment implements OnMapReadyCallback, 
+public abstract class BaseMapFragment extends BaseFragment implements OnMapReadyCallback, 
 																		OnMyLocationButtonClickListener,
 																		OnInfoWindowClickListener {
 	

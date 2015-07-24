@@ -1,9 +1,12 @@
 package com.sirmamobile.saltlux.http.api;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,9 +45,10 @@ public class GetCompareCities extends SaltluxBaseHttp {
     
     @Override
     protected boolean useCache(Context context) {
-    	String tmp = "{\"arrCity\":[\"Seoul\",\"Daejeon\",\"Incheon\",\"Daegu\",\"Gwangju\",\"Pusan\",\"Gangwon-do\",\"Sejong\",\"Ulsan\",\"Kyeonggi-do\",\"Jeju-do\",\"Chungcheongnamdo\",\"Jeollanamdo\",\"Jeollabukdo\",\"Gyeongsangbukdo\",\"Chungcheongbuko\",\"Gyeongsangnamdo\"],\"compareCitiesData\":\"success\",\"data\":{\"response\":[{\"city\":\"Seoul\",\"values\":[{\"index\":\"PLUQI\",\"value\":10},{\"index\":\"Education\",\"value\":5},{\"index\":\"Environment\",\"value\":8},{\"index\":\"Healthcare\",\"value\":7},{\"index\":\"Cultural Satisfaction\",\"value\":9},{\"index\":\"Traffic Satisfaction\",\"value\":4}]},{\"city\":\"Daejeon\",\"values\":[{\"index\":\"PLUQI\",\"value\":9},{\"index\":\"Education\",\"value\":6},{\"index\":\"Environment\",\"value\":9},{\"index\":\"Healthcare\",\"value\":7},{\"index\":\"Cultural Satisfaction\",\"value\":9},{\"index\":\"Traffic Satisfaction\",\"value\":4}]},{\"city\":\"Daegu\",\"values\":[{\"index\":\"PLUQI\",\"value\":8},{\"index\":\"Education\",\"value\":6},{\"index\":\"Environment\",\"value\":5},{\"index\":\"Healthcare\",\"value\":7},{\"index\":\"Cultural Satisfaction\",\"value\":9},{\"index\":\"Traffic Satisfaction\",\"value\":4}]}]}}";
+    	if (TextUtils.isEmpty(readJsonFromAssets(context, "compareCities.json")))
+    		return false;
     	Gson gson = new GsonBuilder().create();
-		reportResponse(gson.fromJson(tmp, CompareCities.class));
+		reportResponse(gson.fromJson(readJsonFromAssets(context, "compareCities.json"), CompareCities.class));
 		return true;
     }
     

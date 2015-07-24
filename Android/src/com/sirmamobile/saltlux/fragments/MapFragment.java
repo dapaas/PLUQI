@@ -10,25 +10,32 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.maps.MapView;
-import com.sirmamobile.base.fragments.RequestFragment;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.sirmamobile.saltlux.R;
 import com.sirmamobile.saltlux.http.model.CityData;
 import com.sirmamobile.saltlux.http.model.Data;
-import com.sirmamobile.saltlux.http.requests.GetCityDataRequestFragment;
 
 /**
  * Created by Martin on 5/5/2015.
  */
 public class MapFragment extends BaseMapFragment implements OnMapReadyCallback, 
 																		OnMyLocationButtonClickListener,
-																		OnInfoWindowClickListener{
+																		OnInfoWindowClickListener,
+																		HomeFragmentChild{
 	
 	private static final String ARG_CITY_DATA = "ARG_CITY_DATA";
 	
@@ -52,7 +59,6 @@ public class MapFragment extends BaseMapFragment implements OnMapReadyCallback,
 	protected void onCreation(boolean fromState, Bundle savedInstanceState) {
 		super.onCreation(fromState, savedInstanceState);
 		data = getArguments().getParcelable(ARG_CITY_DATA);
-		setHasOptionsMenu(true);
 	}
     
     @Override
@@ -65,11 +71,12 @@ public class MapFragment extends BaseMapFragment implements OnMapReadyCallback,
     public void onResume() {
     	super.onResume();
     	if(data == null)
-    		RequestFragment.doRequest(getFragmentManager(), GetCityDataRequestFragment.newInstance(2, 2, 2, 2, 2), GetCityDataRequestFragment.CALLER_MAP);
+    		((HomeFragment)getParentFragment()).demandData(this);
     	else
     		fillData();
     }
     
+    @Override
     public void getCityData(CityData data){
     	this.data = data;
     	getArguments().putParcelable(ARG_CITY_DATA, data);
@@ -149,19 +156,6 @@ public class MapFragment extends BaseMapFragment implements OnMapReadyCallback,
     
     @Override
     public void onInfoWindowClick(Marker marker) {
-    	
+    	((HomeFragment)getParentFragment()).citySelected(markers.get(marker));
     }
-    
-    @Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.home_map, menu);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == R.id.list)
-			((MapListener)getActivity()).switchToList();
-		return super.onOptionsItemSelected(item);
-	}
 }

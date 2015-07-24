@@ -3,6 +3,8 @@ package com.sirmamobile.saltlux.recycleview.saltlux;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Build;
@@ -14,37 +16,36 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sirmamobile.saltlux.R;
+import com.sirmamobile.saltlux.custom.CustomProgressBar;
 import com.sirmamobile.saltlux.recycleview.RecycleViewHolder;
 
 public class CityDataViewHolder extends RecycleViewHolder{
 
 	public CardView cv;
 	public TextView txtTitle;
-	public ProgressBar pbIndex;
+//	public ProgressBar pbIndex;
+	public CustomProgressBar customProgress;
 	
 	public CityDataViewHolder(View v) {
 		super(v);
         cv = (CardView) v.findViewById(R.id.card_view);
         txtTitle = (TextView) v.findViewById(R.id.txtTitle);
-        pbIndex = (ProgressBar) v.findViewById(R.id.pbIndex);
+//        pbIndex = (ProgressBar) v.findViewById(R.id.pbIndex);
+        customProgress = (CustomProgressBar) v.findViewById(R.id.customProgress);
+
 	}
 	
 	public void setOnIconClickListener(OnClickListener listener){
-	}
-	
-	public void setProgressColor(int color) {
-	    final float[] roundedCorners = new float[] { 5, 5, 5, 5, 5, 5, 5, 5 };
-	    ShapeDrawable pgDrawable = new ShapeDrawable(new RoundRectShape(roundedCorners,     null, null));
-	    pgDrawable.getPaint().setColor(color);
-	    ClipDrawable progress = new ClipDrawable(pgDrawable, Gravity.LEFT, ClipDrawable.HORIZONTAL);
-		pbIndex.setProgressDrawable(progress);
 	}
 	
 	@Override
 	 public void dataIsSet(final Context context) {
 		CityDataViewItem cityDataItem = (CityDataViewItem) item;
 		txtTitle.setText(cityDataItem.getData().getCity());
-		pbIndex.setProgress((int)cityDataItem.getData().getPluqi());
+	    customProgress.setMaxValue(10);
+	    customProgress.setProgressValue((int)cityDataItem.getData().getPluqi());
+	    customProgress.setStrokeHeight(100);
+	    customProgress.setColor(context.getResources().getColor(cityDataItem.getColor()));
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
     	    big(context);
     	} else {

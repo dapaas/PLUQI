@@ -15,4 +15,16 @@
     <string name="healthcare">Healthcare</string>
     <string name="cultural_satisfaction">Cultural Satisfaction</string>
     <string name="traffic_satisfaction">Traffic Satisfaction</string>
+    <string name="details">Details</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="pm10">PM10</string>
+    <string name="green_spaces">Green spaces</string>
+    <string name="view_by_">View by:</string>
+    <string name="from_">From:</string>
+    <string name="to_">To:</string>
+    <string name="by_month">By Month</string>
+    <string name="by_quarter">By Quarter</string>
+    <string name="by_year">By Year</string>
+    <string name="apply">Apply</string>
 </resources>

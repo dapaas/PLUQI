@@ -39,8 +39,7 @@ public class NavigationContainer extends DrawerLayout implements OnNavigationIte
 		setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
 	}
 
-	private MenuItem map;
-	private MenuItem list;
+	private MenuItem home;
 	private MenuItem lines;
 	private MenuItem about;
 	
@@ -67,8 +66,7 @@ public class NavigationContainer extends DrawerLayout implements OnNavigationIte
 			}
 		};
 		
-		map = navigationView.getMenu().getItem(0).getSubMenu().findItem(R.id.map);
-		list = navigationView.getMenu().getItem(0).getSubMenu().findItem(R.id.list);
+		home = navigationView.getMenu().findItem(R.id.home);
 		lines = navigationView.getMenu().findItem(R.id.rank);
 		about = navigationView.getMenu().findItem(R.id.compare);
 
@@ -76,10 +74,8 @@ public class NavigationContainer extends DrawerLayout implements OnNavigationIte
 	}
 
 	public NavigationType getSelected(){
-		if(map.isChecked())
-			return NavigationType.fromID(map.getItemId());
-		if(list.isChecked())
-			return NavigationType.fromID(list.getItemId());
+		if(home.isChecked())
+			return NavigationType.fromID(home.getItemId());
 		if(lines.isChecked())
 			return NavigationType.fromID(lines.getItemId());
 		if(about.isChecked())
@@ -89,25 +85,15 @@ public class NavigationContainer extends DrawerLayout implements OnNavigationIte
 	
 	public void setSelected(NavigationType nt, boolean silent){
 		
-		map.setChecked(false);
-		list.setChecked(false);
+		home.setChecked(false);
 		lines.setChecked(false);
 		about.setChecked(false);
 		
 		switch(nt.getMenuItemID()){
-			case R.id.map:
-				about.setChecked(true);
-				map.setChecked(true);
-				about.setChecked(false);
+			case R.id.home:
+				home.setChecked(true);
 				if(!silent)
-					onNavigationItemSelected(map);
-				break;
-			case R.id.list:
-				about.setChecked(true);
-				list.setChecked(true);
-				about.setChecked(false);
-				if(!silent)
-					onNavigationItemSelected(list);
+					onNavigationItemSelected(home);
 				break;
 			case R.id.rank:
 				lines.setChecked(true);
@@ -124,17 +110,12 @@ public class NavigationContainer extends DrawerLayout implements OnNavigationIte
 	
 	@Override
 	public boolean onNavigationItemSelected(MenuItem arg0) {
-		lines.setChecked(true);
-		about.setChecked(true);
+		
+		home.setChecked(false);
+		lines.setChecked(false);
+		about.setChecked(false);
+		
 		arg0.setChecked(true);
-		if(!arg0.equals(map))
-			map.setChecked(false);
-		if(!arg0.equals(list))
-			list.setChecked(false);
-		if(!arg0.equals(lines))
-			lines.setChecked(false);
-		if(!arg0.equals(about))
-			about.setChecked(false);
 		
 		NavigationType nt = NavigationType.fromID(arg0.getItemId());
 		listener.menuSelected(nt);

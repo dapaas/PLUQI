@@ -16,6 +16,32 @@ public class DataCityDetailsResults implements Parcelable{
 	private String endDate;
 	@SerializedName("start_date")
 	private String startDate;
+	
+	
+
+	public List<Node> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(List<Node> topics) {
+		this.topics = topics;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
 
 	public static final Creator<DataCityDetailsResults> CREATOR = new Creator<DataCityDetailsResults>() {
         @Override

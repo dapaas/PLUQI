@@ -16,7 +16,7 @@ public class CityData implements Parcelable{
 	private String cityData;
 	private List<Data> data = new ArrayList<Data>();
 	private DataCityDetails dataCityDetails;
-	private Object dataSubIndices;
+	private DataSubIndices dataSubIndices;
 	private String subIndicesDetailData;
 
 	
@@ -52,11 +52,11 @@ public class CityData implements Parcelable{
 		this.dataCityDetails = dataCityDetails;
 	}
 
-	public Object getDataSubIndices() {
+	public DataSubIndices getDataSubIndices() {
 		return dataSubIndices;
 	}
 
-	public void setDataSubIndices(Object dataSubIndices) {
+	public void setDataSubIndices(DataSubIndices dataSubIndices) {
 		this.dataSubIndices = dataSubIndices;
 	}
 
@@ -89,7 +89,7 @@ public class CityData implements Parcelable{
         cityData = pw.readString();
         pw.readList(data, Data.class.getClassLoader());
         dataCityDetails = pw.readParcelable(DataCityDetails.class.getClassLoader());
-        dataSubIndices = pw.readParcelable(Object.class.getClassLoader());
+        dataSubIndices = pw.readParcelable(DataSubIndices.class.getClassLoader());
         subIndicesDetailData = pw.readString();
     }
 
@@ -104,7 +104,7 @@ public class CityData implements Parcelable{
         pw.writeString(jsonDataCityDetails);
         pw.writeString(cityData);
         pw.writeList(data);
-        pw.writeParcelable((Parcelable) dataSubIndices, flags);
+        pw.writeParcelable(dataSubIndices, flags);
         pw.writeString(subIndicesDetailData);
     }
     
