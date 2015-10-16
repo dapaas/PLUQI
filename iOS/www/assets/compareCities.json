@@ -1,0 +1,95 @@
+{
+  "arrCity": [ "Seoul", "Daejeon", "Incheon", "Daegu", "Gwangju", "Pusan", "Gangwon-do", "Sejong", "Ulsan", "Kyeonggi-do", "Jeju-do", "Chungcheongnamdo", "Jeollanamdo", "Jeollabukdo", "Gyeongsangbukdo", "Chungcheongbuko", "Gyeongsangnamdo" ],
+  "compareCitiesData": "success",
+  "data": {
+    "response": [
+      {
+        "city": "Seoul",
+        "values": [
+          {
+            "index": "PLUQI",
+            "value": 10
+          },
+          {
+            "index": "Education",
+            "value": 5
+          },
+          {
+            "index": "Environment",
+            "value": 8
+          },
+          {
+            "index": "Healthcare",
+            "value": 7
+          },
+          {
+            "index": "Cultural Satisfaction",
+            "value": 9
+          },
+          {
+            "index": "Traffic Satisfaction",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "city": "Daejeon",
+        "values": [
+          {
+            "index": "PLUQI",
+            "value": 9
+          },
+          {
+            "index": "Education",
+            "value": 6
+          },
+          {
+            "index": "Environment",
+            "value": 9
+          },
+          {
+            "index": "Healthcare",
+            "value": 7
+          },
+          {
+            "index": "Cultural Satisfaction",
+            "value": 9
+          },
+          {
+            "index": "Traffic Satisfaction",
+            "value": 4
+          }
+        ]
+      },
+      {
+        "city": "Daegu",
+        "values": [
+          {
+            "index": "PLUQI",
+            "value": 8
+          },
+          {
+            "index": "Education",
+            "value": 6
+          },
+          {
+            "index": "Environment",
+            "value": 5
+          },
+          {
+            "index": "Healthcare",
+            "value": 7
+          },
+          {
+            "index": "Cultural Satisfaction",
+            "value": 9
+          },
+          
+          {
+            "index": "Traffic Satisfaction",
+            "value": 4
+          }
+        ]
+      }
+    ]
+  }}

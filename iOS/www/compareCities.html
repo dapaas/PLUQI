@@ -1,0 +1,71 @@
+﻿<div id="container">
+    <div class="raw" id="chart1">
+    </div>
+    <div class="raw" style="text-align:center;">
+        <label>
+            <input name="gruppedStacked" id="grouped" type="radio" checked>Grouped
+            <input name="gruppedStacked" id="stacked" type="radio">Stacked
+        </label>
+    </div>
+    <div class="raw">
+        <a href="#" class="ui-btn">SELECT CITIES</a>
+    </div>
+</div>
+<link class="include" rel="stylesheet" type="text/css" href="js/jqplot/jquery.jqplot.min.css" />
+<script class="include" type="text/javascript" src="js/jqplot/jquery.jqplot.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.CategoryAxisRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script class="include" type="text/javascript" src="js/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+
+<script>
+    jQuery("#container").ready(function () {
+        jQuery.getJSON("assets/compareCities.json", function (json) {
+            var arrays = [[], [], []];
+            var cities = json.data.response;
+            //console.log(cities);
+            for (var i = 0; i < cities.length; i++) {
+                var city = cities[i];
+                //console.log(city);
+                for (var j = 0; j < city.values.length; j++) {
+                    var value1 = city.values[j];
+                    //console.log(value1);
+                    //if (value1.index == "PLUQI") {
+                    //    arrays[0][i] = [city.city, value1.value];
+                    //} else if (value1.index == "Environment") {
+                    //    arrays[1][i] = [city.city, value1.value];
+                    //} else if (value1.index == "Cultural Satisfaction") {
+                    //    arrays[2][i] = [city.city, value1.value];
+                    //}
+                    if (value1.index == "PLUQI") {
+                        arrays[i][0] = [city.city, value1.value];
+                    } else if (value1.index == "Environment") {
+                        arrays[i][1] = [city.city, value1.value];
+                    } else if (value1.index == "Cultural Satisfaction") {
+                        arrays[i][2] = [city.city, value1.value];
+                    }
+                }
+            }
+            //console.log(arrays[0], arrays[1], arrays[2]);
+            jQuery('#chart1').jqplot([arrays[0], arrays[1], arrays[2]], {
+                //title: 'Bar Chart with Custom Colors',
+                // Provide a custom seriesColors array to override the default colors.
+                //seriesColors: ['#85802b', '#00749F', '#73C774', '#C7754C', '#17BDB8'],
+                seriesDefaults: {
+                    renderer: jQuery.jqplot.BarRenderer,
+                    rendererOptions: {
+                        // Set varyBarColor to tru to use the custom colors on the bars.
+                        varyBarColor: true
+                    }
+                },
+                axes: {
+                    xaxis: {
+                        renderer: jQuery.jqplot.CategoryAxisRenderer
+                    }
+                }
+            });
+        });
+    });
+</script>
+

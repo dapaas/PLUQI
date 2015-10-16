@@ -1,0 +1,68 @@
+﻿<div id="container">
+    <form action="#">
+        <div class="raw" data-role="fieldcontain">
+            <div class="col-xs-4 col-sm-4">
+                View&nbsp;By:
+            </div>
+            <div class="col-xs-8 col-sm-8">
+                <div data-role="fieldcontain">
+                    <label for="activity1" class="select" style="display:none;">View By:</label>
+                    <select name="activity1" id="activity1">
+                        <option>PLUQI</option>
+                        <option>Education</option>
+                        <option>Environment</option>
+                        <option>Helthcare</option>
+                        <option>Cultural Satisfaction</option>
+                        <option>Trafic Satisfaction</option>
+                    </select>
+                </div><br style="clear:both;" />
+            </div>
+        </div>
+        <div class="raw">
+            <div class="col-xs-3 col-sm-3">
+                From:
+            </div>
+            <div class="col-xs-9 col-sm-9">
+                <input data-role="date" type="text" class="date-input" data-inline="false" >
+            </div>
+        </div>
+        <div class="raw">
+            <div class="col-xs-3 col-sm-3">
+                To:
+            </div>
+            <div class="col-xs-9 col-sm-9">
+                <input data-role="date" type="text" class="date-input" data-inline="false" >
+            </div>
+        </div>
+        <div class="raw">
+            <label>
+                <input name="byMonth" id="byMonth" type="radio">By Month
+                <input name="byQuarter" id="byQuarter" type="radio">By Quarter
+                <input name="byYear" id="byYear" type="radio">By Year
+            </label>
+        </div>
+        <div class="raw">
+            <a href="#" class="ui-btn">APPLY</a>
+        </div>
+        <div class="raw show-grid">
+            <div class="col-xs-12 col-sm-12" style="background:rgba(86, 61, 124, 0.15);padding:5px;">
+                20140921
+            </div>
+        </div>
+</form>
+    <div id="rankList"></div>
+</div>
+<script>
+    jQuery("#container").ready(function () {
+        jQuery("#activity").selectmenu();
+        jQuery(".date-input").datepicker();
+        jQuery.getJSON("assets/cityData.json", function (json) {
+            var rankList = jQuery("#rankList");
+            var cities = json.data;
+            for (var i = 0; i < cities.length; i++) {
+                jQuery("<div class='raw show-grid'><div class='col-xs-9 col-sm-9' style='margin-top:5px;'>" + cities[i].City +
+                    "</div><div class='col-xs-3 col-sm-3' style='background:" + (i < 3 ? "#f00" : "#00F") + ";margin-top:5px;text-align:center;'>" + i + "</div></div>").appendTo(rankList);
+            }
+        });
+    });
+</script>

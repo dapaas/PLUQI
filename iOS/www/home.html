@@ -1,0 +1,91 @@
+﻿<div class="container">
+    <div class="raw" id="upperPart">
+        <div class="col-sm-12" style="border:1px solid;">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-xs-3 col-sm-3" style="margin-top:5px;">
+                        Education
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <form class="full-width-slider">
+                            <label for="education" class="ui-hidden-accessible">Education:</label>
+                            <input class="the-slider" name="education" id="education" min="0" max="100" value="50" type="range">
+                        </form>
+                    </div>
+                    <div class="col-xs-1 col-sm-1" style="margin-top:5px;">
+                        <span id="education-val">0</span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-xs-3 col-sm-3" style="margin-top:5px;">
+                        Environment
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <form class="full-width-slider">
+                            <label for="environment" class="ui-hidden-accessible">Education:</label>
+                            <input class="the-slider" name="environment" id="environment" min="0" max="100" value="50" type="range">
+                        </form>
+                    </div>
+                    <div class="col-xs-1 col-sm-1" style="margin-top:5px;">
+                        <span id="environment-val">0</span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-xs-3 col-sm-3" style="margin-top:5px;">
+                        Helthcare
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <form class="full-width-slider">
+                            <label for="helthcare" class="ui-hidden-accessible">Education:</label>
+                            <input class="the-slider" name="helthcare" id="helthcare" min="0" max="100" value="50" type="range">
+                        </form>
+                    </div>
+                    <div class="col-xs-1 col-sm-1" style="margin-top:5px;">
+                        <span id="helthcare-val">0</span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-xs-3 col-sm-3" style="margin-top:5px;">
+                        Cultural Satisfaction
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <form class="full-width-slider">
+                            <label for="cultural" class="ui-hidden-accessible">Education:</label>
+                            <input class="the-slider" name="cultural" id="cultural" min="0" max="100" value="50" type="range">
+                        </form>
+                    </div>
+                    <div class="col-xs-1 col-sm-1" style="margin-top:5px;">
+                        <span id="cultural-val">0</span>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5px;margin-bottom:5px;">
+                    <div class="col-xs-3 col-sm-3" style="margin-top:5px;">
+                        Trafic Satisfaction
+                    </div>
+                    <div class="col-xs-7 col-sm-7">
+                        <form class="full-width-slider">
+                            <label for="trafic" class="ui-hidden-accessible">Education:</label>
+                            <input class="the-slider" name="trafic" id="trafic" min="0" max="100" value="50" type="range">
+                        </form>
+                    </div>
+                    <div class="col-xs-1 col-sm-1" style="margin-top:5px;">
+                        <span id="trafic-val">0</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+    <div class="raw">
+        <div class="col-sm-12" style="border:1px solid;overflow-y:scroll;" id="downPannel">
+        </div>
+    </div>
+</div>
+<script>
+    jQuery(".container").ready(function () {
+        jQuery(".the-slider").change(function () {
+            var inp = jQuery(this);
+            console.log("change " + inp.attr("id"));
+            jQuery("#" + inp.attr("id") + "-val").html(inp.val());
+        });
+        jQuery("#downPannel").load("cities_values.html");
+    });
+</script>

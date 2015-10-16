@@ -1,0 +1,43 @@
+﻿<div class="raw" id="cityPluqiList"></div>
+<style>
+.redSlider  .ui-slider-range { 
+    background: #ef2929; 
+}
+</style>
+<script>
+    jQuery(".downPannel").ready(function () {
+        var cityPluqiList = jQuery("#cityPluqiList");
+        //var redSlider = jQuery("<div class='redSlider'></div>");
+        //redSlider.appendTo(cityPluqiList);
+        //redSlider.slider({
+        //    orientation: "horizontal",
+        //    range: "min",
+        //    max: 255,
+        //    value: 127,
+        //    slide: refreshSwatch,
+        //    change: refreshSwatch
+        //});
+        jQuery.getJSON("assets/cityData.json", function (json) {
+            var collors = "#62A0CB,#C6D8EF,#FFA556,#FFCFA1,#6BBD6B,#B7E9AD,#D62728,#FFB7B6,#B495D1,#D6C8E2,#AF8981,#D6BAB4,#EBA0D4,#F9CCDF,#A5A5A5,#D8D8D8".split(",");
+            var cities = json.data;
+            for (var i = 0; i < cities.length; i++) {
+                var progress = "city_pluqi_bar" + i;
+                var progressInput=jQuery("<input type='range' name='" + progress + "' id='" + progress + "' data-highlight='true' min='0' max='10' value='" + cities[i].PLUQI + "'>");
+                progressInput.appendTo(jQuery("<div class='col-sm-12'>" + cities[i].City + "<br></div>").appendTo(cityPluqiList));
+                progressInput.slider().remove();
+                console.log(cities[i].City + " PLUQI " + cities[i].PLUQI);
+                //jQuery("<div class='col-sm-12'>" + cities[i].City + "<br> <div id='" + progress + "'></div></div>").appendTo(cityPluqiList);jQuery("#" + progress).progressbar({ value: cities[i].PLUQI });
+            }
+            jQuery(".ui-slider-handle").remove();
+            jQuery('.ui-slider-track').css('margin', '0 15px 0 15px').css('pointer-events', 'none');
+            //var cityPluqiListHeight = (p.viewport.height - jQuery("#upperPart").height() - jQuery("#toolbarnav").height());
+            var downPannel = jQuery("#downPannel");
+            var cityPluqiListHeight = downPannel.height() - (jQuery(document).height() - jQuery(window).height());
+            console.log("cityPluqiListHeight " + cityPluqiListHeight);
+            //jQuery("#downPannel").css({ height: cityPluqiListHeight + "px" });
+            //cityPluqiListHeight -= jQuery(document).height() - p.viewport.height + 10;
+            //console.log("cityPluqiListHeight " + cityPluqiListHeight);
+            jQuery("#downPannel").css({ height: cityPluqiListHeight + "px" });
+        });
+    });
+</script>
